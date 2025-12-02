@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jinnie Chat — Connect with Friends</title>
+  <meta name="description" content="Jinnie Chat — realtime, private chat with password-protected rooms, file sharing, and mobile-friendly design.">
+  <link rel="icon" href="jinnie-chats.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="jinnie-chats.png" alt="Jinnie Chat logo" class="logo">
+        <span class="brand-name">Jinnie Chat</span>
+      </div>
+      <div class="nav-ctas">
+        <a href="/" class="btn btn-ghost">Use Online</a>
+        <button id="downloadBtn" class="btn btn-primary">Download App</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">Private. Fast. Beautiful.</h1>
+        <p class="hero-sub">Jinnie Chat brings people together with instant messaging, password-protected rooms, file & image sharing, and realtime notifications — built for phones and desktop.</p>
+
+        <div class="hero-ctas">
+          <a href="https://jinniechat.onrender.com" class="btn btn-large">Use Online — Try Now</a>
+          <button id="downloadBtn2" class="btn btn-outline">Get the App</button>
+        </div>
+
+        <ul class="features">
+          <li>🔒 Password-protected rooms</li>
+          <li>📁 Send files & images</li>
+          <li>📱 Mobile-first & PWA-ready</li>
+          <li>🚀 Low-latency realtime chat</li>
+        </ul>
+      </div>
+
+      <div class="hero-right">
+        <div class="mockup">
+          <img src="phone-mock.png" alt="Jinnie Chat app preview" class="mockup-img">
+          <div class="mockup-badge">New • v1.0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Showcase / Screens -->
+  <section class="showcase">
+    <div class="wrap">
+      <h2>What you’ll love</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">💬</div>
+          <h3>Real-time Messaging</h3>
+          <p>Instant delivery and read-friendly UI similar to modern chat apps.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🔐</div>
+          <h3>Private Rooms</h3>
+          <p>Create rooms with a password — only invited people can join.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">📦</div>
+          <h3>Send Files & Images</h3>
+          <p>Share photos or files quickly — preview images in chat.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🔔</div>
+          <h3>Push & In-App Notifications</h3>
+          <p>Get alerts when someone sends a message or joins your room.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="cta-strip">
+    <div class="wrap">
+      <div class="cta-left">
+        <h3>Ready to chat with friends across the world?</h3>
+        <p>No signup required — pick a display name and start.</p>
+      </div>
+      <div class="cta-right">
+        <a href="/" class="btn btn-large">Use Online</a>
+        <button id="downloadBtn3" class="btn btn-outline">Download App</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand-small">
+        <img src="jinnie-chats.png" alt="logo" class="logo-small">
+        <span>Jinnie Chat</span>
+      </div>
+      <div class="foot-links">
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <div class="copyright">© <span id="year">2025</span> Jinnie Chat — Built with ❤️</div>
+    </div>
+  </footer>
+
+  <!-- Download Modal -->
+  <div id="downloadModal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close" id="closeDownload" aria-label="Close">✕</button>
+      <h3>Download Jinnie Chat</h3>
+      <p class="muted">Choose your option — or copy the direct link to share.</p>
+
+      <div class="download-actions">
+        <a id="playStoreBtn" class="store-btn" href="https://play.google.com/store/apps/details?id=com.example.jinnie" target="_blank" rel="noopener">
+          <img src="play-badge.png" alt="Get it on Google Play" /> Google Play
+        </a>
+
+        <a id="apkBtn" class="store-btn" href="/downloads/jinnie-chat.apk" download>
+          <img src="apk-icon.png" alt="APK" /> Download APK
+        </a>
+
+        <a id="appGalleryBtn" class="store-btn" href="#" style="display:none;">
+          <img src="huawei-badge.png" alt="AppGallery" /> AppGallery
+        </a>
+      </div>
+
+      <div class="copy-row">
+        <input id="downloadLink" readonly value="https://jinniechat.example.com/app" />
+        <button id="copyDownload" class="btn small">Copy</button>
+      </div>
+
+      <div class="modal-foot">
+        <small class="muted">Tip: Install as PWA on mobile for best experience.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="landingToast" class="toast hidden">Copied!</div>
+
+  <script src="landing.js"></script>
+</body>
+</html>
