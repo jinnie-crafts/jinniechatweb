@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('downloadBtn');
   const downloadBtn2 = document.getElementById('downloadBtn2');
   const downloadBtn3 = document.getElementById('downloadBtn3');
+  const downloadBtn4 = document.getElementById('downloadBtn4');
   const closeDownload = document.getElementById('closeDownload');
   const copyDownload = document.getElementById('copyDownload');
   const downloadLinkInput = document.getElementById('downloadLink');
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadModal.setAttribute('aria-hidden', 'true');
   }
 
-  [downloadBtn, downloadBtn2, downloadBtn3].forEach(btn => {
+  [downloadBtn, downloadBtn2, downloadBtn3, downloadBtn4].forEach(btn => {
     if (btn) btn.addEventListener('click', openModal);
   });
 
