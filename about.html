@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>About — Jinnie Chat</title>
+  <link rel="icon" href="jinnie-chats.png">
+  <link rel="stylesheet" href="site-style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><img src="jinnie-chats.png" alt="Jinnie Chat" class="logo"> <span>Jinnie Chat</span></a>
+
+    <nav class="nav-links" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">T&C</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<aside id="sideDrawer" class="side-drawer" aria-hidden="true">
+  <div class="drawer-header">
+    <strong>Menu</strong>
+    <button id="closeDrawer" aria-label="Close drawer">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+  </nav>
+  <div class="drawer-foot">
+    <button id="downloadApp" class="btn small">Download App</button>
+    <button id="useOnline" class="btn outline">Use Online</button>
+  </div>
+</aside>
+
+<div id="quickMenu" class="quick-menu" aria-hidden="false">
+  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
+  <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
+    <button class="quick-item" id="quickInvite">Invite</button>
+    <button class="quick-item" id="quickDownload">Download</button>
+    <button class="quick-item" id="quickContact">Contact</button>
+  </div>
+</div>
+
+<main class="wrap content" id="mainContent">
+  <h1>About Jinnie Chat</h1>
+  <p class="lead">Jinnie Chat is a lightweight, privacy-first real-time chat platform focused on simplicity, security, and a delightful user experience across devices.</p>
+
+  <section>
+    <h2>Mission</h2>
+    <p>Our mission is to provide a fast, private, and easy-to-use chat solution that requires minimal setup. Users can create password-protected rooms, invite others via share links or SMS, and exchange messages and files instantly.</p>
+  </section>
+
+  <section>
+    <h2>Features</h2>
+    <ul>
+      <li>Password-protected rooms and per-room access control.</li>
+      <li>Real-time messaging via WebSockets for low latency.</li>
+      <li>Inline image previews and file sharing.</li>
+      <li>Progressive Web App (PWA) support and optional push notifications.</li>
+      <li>Mobile-first responsive UI and accessibility considerations.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Security &amp; Privacy</h2>
+    <p>We practice data minimization and provide tools for operators to control retention. For self-hosted deployments, administrators control message storage and deletion policies.</p>
+  </section>
+
+  <section>
+    <h2>Getting Involved</h2>
+    <p>Contributions, bug reports, and feature requests are welcome. Please refer to the project's repository for contribution guidelines.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <small>© 2025 Jinnie Chat — Built with privacy in mind.</small>
+  </div>
+</footer>
+
+<script src="site-script.js"></script>
+</body>
+</html>

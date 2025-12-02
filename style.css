@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fredericka+the+Great&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Licorice&family=Nanum+Myeongjo&family=Nosifer&family=Playwrite+DE+Grund+Guides&display=swap');
 /* style.css — Landing page styles (Jinnie Chat) */
-
+:root{
+  --accent:#17b04f;
+  --accent-2:#25D366;
+}
 /* Reset & vars */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root{
@@ -102,3 +106,153 @@ a { text-decoration: none; color: inherit; }
 .logo-small{
     block-size: 20px;
 }
+
+.branding{
+  display: flex;
+  font-size: 3em;
+    justify-content: center;
+    align-items: center; 
+   color: #04241e; 
+   line-height:1.02;
+    margin-top:4px; 
+    letter-spacing:-0.02em;
+    font-weight: 500;
+    font-family: "Licorice", static;
+}
+
+/* ============ NAVBAR ============ */
+
+.header {
+  width: 100%;
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-area img {
+  width: 38px;
+  height: 38px;
+}
+
+.logo-area span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #075E54;
+}
+
+/* Desktop nav links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: #25D366;
+}
+
+/* ========= HAMBURGER ========== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #333;
+  transition: 0.3s ease;
+  border-radius: 4px;
+}
+
+/* Hamburger active animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    gap: 16px;
+
+    display: none; /* default hidden */
+  }
+
+  .nav-links.open {
+    display: flex; /* show when toggled */
+    animation: fadeDown 0.25s ease;
+  }
+}
+
+/* Animation */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/*Quick menu */
+.quick-menu{position:fixed;right:18px;bottom:18px;z-index:400;display:flex;align-items:flex-end;flex-direction:column;gap:12px;}
+.fab{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:28px;cursor:pointer;box-shadow:0 12px 30px rgba(6,48,40,0.16);}
+.quick-list{display:flex;flex-direction:column;gap:8px;margin-bottom:8px;}
+.quick-list.hidden{display:none;}
+.quick-item{background:var(--card);border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;color:var(--text);box-shadow:var(--shadow);}
+
+/* responsive */
+@media (max-width:880px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .logo{width:44px;height:44px;}
+  .side-drawer{width:86%;right:-100%;}
+  .side-drawer.open{right:0;}
+  .wrap{padding:14px;}
+}
+
+/* small utility */
+.hidden{display:none;}

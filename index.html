@@ -9,22 +9,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+<!--Quick Fab-->
+<div id="quickMenu" class="quick-menu" aria-hidden="false">
+  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
+  <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
+    <button class="quick-item" id="quickInvite">Invite</button>
+    <button class="quick-item" id="quickDownload">Download</button>
+    <button class="quick-item" id="quickContact">Contact</button>
+  </div>
+</div>
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
       <div class="brand">
         <img src="jinnie-chats.png" alt="Jinnie Chat logo" class="logo">
-        <span class="brand-name">Jinnie Chat | karsh</span>
+        <span class="brand-name">Jinnie Chat</span>
       </div>
       <div class="nav-ctas">
-        <a href="https://jinniechat.onrender.com/" class="btn btn-ghost">Use Online</a>
-        <button id="downloadBtn" class="btn btn-primary">Download App</button>
+        <a href="https://jinniechat.onrender.com" target="_blank" class="btn btn-ghost">Use Online</a>
+        <button id="downloadBtn2" class="btn btn-primary">Download App</button>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
+   <span class="branding"> by: karsh Securities</span>
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-left">
@@ -46,8 +55,8 @@
 
       <div class="hero-right">
         <div class="mockup">
-          <img src="phone-mock.png" alt="Jinnie Chat app preview" class="mockup-img">
-          <div class="mockup-badge">New • v1.0</div>
+          <img src="app-interface.png" alt="Jinnie Chat app preview" class="mockup-img">
+          <div class="mockup-badge">New • v2.1</div>
         </div>
       </div>
     </div>
@@ -107,9 +116,9 @@
         <span>Jinnie Chat</span>
       </div>
       <div class="foot-links">
-        <a href="/about">About</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
+        <a href="/about.html">About |</a>
+        <a href="/privacy.html">Privacy |</a>
+        <a href="/terms.html">Terms</a>
       </div>
       <div class="copyright">© <span id="year">2025</span> Jinnie Chat — Built with ❤️</div>
     </div>
@@ -123,12 +132,12 @@
       <p class="muted">Choose your option — or copy the direct link to share.</p>
 
       <div class="download-actions">
-        <a id="playStoreBtn" class="store-btn" href="https://play.google.com/store/apps/details?id=com.example.jinnie" target="_blank" rel="noopener">
+        <!-- <a id="playStoreBtn" class="store-btn" href="https://play.google.com/store/apps/details?id=com.example.jinnie" target="_blank" rel="noopener">
           <img src="play-badge.png" alt="Get it on Google Play" /> Google Play
-        </a>
+        </a> -->
 
-        <a id="apkBtn" class="store-btn" href="/downloads/jinnie-chat.apk" download>
-          <img src="apk-icon.png" alt="APK" /> Download APK
+        <a id="apkBtn" class="store-btn" href="/app/Jinnie-Chats-v2.apk" download>
+          <img src="jinnie-chats.png" alt="APK" /> Download APK
         </a>
 
         <a id="appGalleryBtn" class="store-btn" href="#" style="display:none;">
@@ -137,7 +146,7 @@
       </div>
 
       <div class="copy-row">
-        <input id="downloadLink" readonly value="https://jinniechat.example.com/app" />
+        <input id="downloadLink" readonly value="https://tinyurl.com/jinniechat"/>
         <button id="copyDownload" class="btn small">Copy</button>
       </div>
 
@@ -153,4 +162,3 @@
   <script src="landing.js"></script>
 </body>
 </html>
-

@@ -93,3 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+
+
+
+ quickFab && quickFab.addEventListener('click', ()=>{
+    quickList.classList.toggle('hidden');
+    quickFab.classList.toggle('active');
+  });
+
+  document.getElementById('quickInvite')?.addEventListener('click', ()=>{
+    const inviteInput = document.getElementById('invite-url');
+    const url = inviteInput?.value || window.location.href;
+    navigator.clipboard.writeText(url).then(()=> alert('Invite link copied!'));
+    quickList.classList.add('hidden');
+  });
+  document.getElementById('quickDownload')?.addEventListener('click', ()=>{
+    const a = document.createElement('a');
+    a.href = document.getElementById('downloadLink1')?.value || '/app/Jinnie-Chats-v2.apk';
+    a.target = '_blank';
+    a.click();
+    quickList.classList.add('hidden');
+  });
+  document.getElementById('quickContact')?.addEventListener('click', ()=>{
+    window.location.href = 'mailto:karshsecurities@gmail.com';
+  });
+
+  downloadBtn && downloadBtn.addEventListener('click', ()=>{
+    window.location.href = document.getElementById('downloadLink1')?.value || '/app/Jinnie-Chats-v2.apk';
+  });
+  useOnlineBtn && useOnlineBtn.addEventListener('click', ()=>{
+    window.open('/', '_blank');
+  });
+
+  // close drawer on Escape
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && drawer.classList.contains('open')){ closeDrawerFn(); hamburger.classList.remove('active'); }
+  });
