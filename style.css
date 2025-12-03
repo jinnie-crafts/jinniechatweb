@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fredericka+the+Great&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Licorice&family=Nanum+Myeongjo&family=Nosifer&family=Playwrite+DE+Grund+Guides&display=swap');
-/* style.css — Landing page styles (Jinnie Chat) */
+
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+/* 
+
+style.css — Landing page styles (Jinnie Chat) */
 :root{
   --accent:#17b04f;
   --accent-2:#25D366;
@@ -117,7 +121,7 @@ a { text-decoration: none; color: inherit; }
     margin-top:4px; 
     letter-spacing:-0.02em;
     font-weight: 700;
-    font-family: "Licorice", static;
+    font-family: "Italianno", cursive;
 }
 
 /* ============ NAVBAR ============ */
@@ -257,3 +261,4 @@ a { text-decoration: none; color: inherit; }
 /* small utility */
 
 .hidden{display:none;}
+
