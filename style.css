@@ -120,7 +120,7 @@ a { text-decoration: none; color: inherit; }
    line-height:1.02;
     margin-top:4px; 
     letter-spacing:-0.02em;
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Italianno", cursive;
 }
 
@@ -261,4 +261,5 @@ a { text-decoration: none; color: inherit; }
 /* small utility */
 
 .hidden{display:none;}
+
 
