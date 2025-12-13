@@ -162,7 +162,6 @@
   <div id="landingToast" class="toast hidden">Copied!</div>
 
 <!--Feedback system-->
-<div style="height: 1500px;"></div>
     <div id="feedback-tab" onmousedown="startDrag(event)">
         Feedback
     </div>
@@ -171,7 +170,7 @@
         <div class="modal-content">
             
             <div class="fd-header">
-                <div class="logo-circle">j</div>
+                <div class="logo-circle">k</div>
                 <h2>Jinnie Chat | karsh</h2>
             </div>
             
@@ -206,8 +205,7 @@
     <h3>🐞 Report a Bug</h3>
     <form id="bug-form" onsubmit="submitForm('bug', event)">
         <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
-         <!-- <input type="hidden" name="access_key" value="8e10891a-ee36-48d6-abcc-d2d8b8ae9420"> -->
-        <input type="hidden" name="from_name" value="Jinnie Chat">
+         <input type="hidden" name="from_name" value="Jinnie Chat">
         <input type="hidden" name="subject" value="New Bug Reported">
         
         <label for="bug-summary">Summarize the issue:</label>
@@ -218,29 +216,16 @@
         
         <label for="bug-email">Your Email (for follow-up):</label>
         <input type="email" name="User-Email" id="bug-email">
-        <!-- <div 
-            class="h-captcha" 
-            data-sitekey="1356595c-5e70-4fe4-afb6-715a11409df8" 
-            data-callback="onhCaptchaSuccess"
-        ></div> -->
         <div class="h-captcha" data-captcha="true"></div>
         <button type="submit">Submit Bug Report</button>
     </form>
 </div>
-<!-- <form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Submit Form</button>
-</form> -->
-            <div id="suggestion" class="internal-page">
+<div id="suggestion" class="internal-page">
                 <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
                 <h3>💬 Suggest Improvements</h3>
                 <form onsubmit="submitForm('suggestion', event)">
                     <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
-                    <!-- <input type="hidden" name="access_key" value="8e10891a-ee36-48d6-abcc-d2d8b8ae9420"> -->
-                       <input type="hidden" name="from_name" value="Jinnie Chat">
+                    <input type="hidden" name="from_name" value="Jinnie Chat">
                      <input type="hidden" name="subject" value="New Suggestion Logged">
                     <label for="suggestion-title">Idea Title:</label>
                     <input type="text" id="suggestion-title" name="sug-title" required>
@@ -261,10 +246,9 @@
                 
                 <p><strong>💬 Live Chat:</strong><br>Available Mon-Fri, 9am-5pm IST</p>
                 
-                <p><strong>🌐 Help Center / FAQ:</strong><br><a href="https://tinyurl.com.jinniechat" target="_blank">Jinnie Chats</a></p>
+                <p><strong>🌐 Help Center / FAQ:</strong><br><a href="https://www.instagram.com/karshsecurities" target="_blank">Jinnie Chats</a></p>
                 
-                <!-- <button onclick="toggleModal(false); /* In real app, launch chat widget */">Start Live Chat</button> -->
-            </div>
+                </div>
 
         </div>
     </div>
@@ -277,9 +261,8 @@
             <button class="close-btn" onclick="showConfirmation(false)">Got It!</button>
         </div>
     </div>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 <script src="feed.js"></script>
-<script src="https://web3forms.com/client/script.js" async defer></script>
-<!---->
   <script src="landing.js"></script>
 </body>
 </html>
