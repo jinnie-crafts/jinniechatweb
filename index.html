@@ -6,7 +6,9 @@
   <title>Jinnie Chat — Connect with Friends</title>
   <meta name="description" content="Jinnie Chat — realtime, private chat with password-protected rooms, file sharing, and mobile-friendly design.">
   <link rel="icon" href="jinnie-chats.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="feed.css">
 </head>
 <body>
 <!--Quick Fab-->
@@ -159,6 +161,125 @@
   <!-- Toast -->
   <div id="landingToast" class="toast hidden">Copied!</div>
 
+<!--Feedback system-->
+<div style="height: 1500px;"></div>
+    <div id="feedback-tab" onmousedown="startDrag(event)">
+        Feedback
+    </div>
+
+    <div id="feedback-modal" class="modal" onclick="if(event.target.id === 'feedback-modal') toggleModal(false)">
+        <div class="modal-content">
+            
+            <div class="fd-header">
+                <div class="logo-circle">j</div>
+                <h2>Jinnie Chat | karsh</h2>
+            </div>
+            
+            <div id="main-menu">
+                <ul class="menu">
+                    <li class="menu-item" onclick="showPage('bug-report')">
+                        <div class="icon"><i class="fas fa-bug"></i></div>
+                        <div class="text-content">
+                            <h3>Report a bug</h3>
+                            <p>Something is broken? Let us know!</p>
+                        </div>
+                    </li>
+                    <li class="menu-item" onclick="showPage('suggestion')">
+                        <div class="icon"><i class="fas fa-comment-dots"></i></div>
+                        <div class="text-content">
+                            <h3>Suggest improvements</h3>
+                            <p>What could we do better?</p>
+                        </div>
+                    </li>
+                    <li class="menu-item" onclick="showPage('support')">
+                        <div class="icon"><i class="fas fa-headset"></i></div>
+                        <div class="text-content">
+                            <h3>Support</h3>
+                            <p>Contact our lovely support team</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+           <div id="bug-report" class="internal-page">
+            <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+    <h3>🐞 Report a Bug</h3>
+    <form id="bug-form" onsubmit="submitForm('bug', event)">
+        <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
+         <!-- <input type="hidden" name="access_key" value="8e10891a-ee36-48d6-abcc-d2d8b8ae9420"> -->
+        <input type="hidden" name="from_name" value="Jinnie Chat">
+        <input type="hidden" name="subject" value="New Bug Reported">
+        
+        <label for="bug-summary">Summarize the issue:</label>
+        <input type="text" name="Summary" id="bug-summary" required>
+        
+        <label for="bug-description">Steps to reproduce & details:</label>
+        <textarea id="bug-description" name="Description" rows="5" required></textarea>
+        
+        <label for="bug-email">Your Email (for follow-up):</label>
+        <input type="email" name="User-Email" id="bug-email">
+        <!-- <div 
+            class="h-captcha" 
+            data-sitekey="1356595c-5e70-4fe4-afb6-715a11409df8" 
+            data-callback="onhCaptchaSuccess"
+        ></div> -->
+        <div class="h-captcha" data-captcha="true"></div>
+        <button type="submit">Submit Bug Report</button>
+    </form>
+</div>
+<!-- <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
+</form> -->
+            <div id="suggestion" class="internal-page">
+                <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+                <h3>💬 Suggest Improvements</h3>
+                <form onsubmit="submitForm('suggestion', event)">
+                    <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
+                    <!-- <input type="hidden" name="access_key" value="8e10891a-ee36-48d6-abcc-d2d8b8ae9420"> -->
+                       <input type="hidden" name="from_name" value="Jinnie Chat">
+                     <input type="hidden" name="subject" value="New Suggestion Logged">
+                    <label for="suggestion-title">Idea Title:</label>
+                    <input type="text" id="suggestion-title" name="sug-title" required>
+                    
+                    <label for="suggestion-details">Detailed Explanation:</label>
+                    <textarea id="suggestion-details" rows="5" name="sug-desp" required></textarea>
+                    <div class="h-captcha" data-captcha="true"></div>
+                    <button type="submit">Submit Suggestion</button>
+                </form>
+            </div>
+
+            <div id="support" class="internal-page">
+                <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+                <h3>🎧 Contact Support</h3>
+                <p>For immediate assistance, please use one of the methods below. Check our FAQ first!</p>
+                
+                <p><strong>📧 Email Support:</strong><br>karshsecurities@gmail.com</p>
+                
+                <p><strong>💬 Live Chat:</strong><br>Available Mon-Fri, 9am-5pm IST</p>
+                
+                <p><strong>🌐 Help Center / FAQ:</strong><br><a href="https://tinyurl.com.jinniechat" target="_blank">Jinnie Chats</a></p>
+                
+                <!-- <button onclick="toggleModal(false); /* In real app, launch chat widget */">Start Live Chat</button> -->
+            </div>
+
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal" onclick="if(event.target.id === 'confirmation-modal') showConfirmation(false)">
+        <div class="modal-content">
+            <div class="icon-success"><i class="fas fa-check-circle"></i></div>
+            <h3 id="confirmation-title"></h3>
+            <p id="confirmation-message"></p>
+            <button class="close-btn" onclick="showConfirmation(false)">Got It!</button>
+        </div>
+    </div>
+<script src="feed.js"></script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<!---->
   <script src="landing.js"></script>
 </body>
 </html>

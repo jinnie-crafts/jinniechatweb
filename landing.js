@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     quickList.classList.add('hidden');
   });
   document.getElementById('quickContact')?.addEventListener('click', ()=>{
-    window.location.href = 'mailto:karshsecurities@gmail.com';
+    window.location.href = 'https://www.instagram.com/karshsecurities/';
   });
 
   downloadBtn && downloadBtn.addEventListener('click', ()=>{
