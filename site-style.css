@@ -83,3 +83,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);-webkit-font-smooth
 
 /* small utility */
 .hidden{display:none;}
+
+
+.mail{
+  color: #fff;
+  text-decoration: none;
+}
