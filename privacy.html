@@ -4,24 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Privacy Policy — Jinnie Chat</title>
-  <link rel="icon" href="jinnie-chats.png">
+  <meta name="description" content="Privacy Policy for Jinnie Chat — Learn how we protect your conversations and adhere to data minimization.">
+  <link rel="icon" href="jinnie-chats.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="site-style.css">
 </head>
 <body>
 
+<!-- Site Header -->
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html"><img src="jinnie-chats.png" alt="Jinnie Chat" class="logo"> <span>Jinnie Chat</span></a>
+    <a class="brand" href="index.html">
+      <img src="jinnie-chats.png" alt="Jinnie Chat" class="logo">
+      <span>Jinnie Chat</span>
+    </a>
 
     <nav class="nav-links" id="navMenu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">T&C</a>
+      <a href="privacy.html" class="active">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="chat.html"><i class="fas fa-comments"></i> Use Online</a>
     </nav>
 
     <div class="header-actions">
-      <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme">🌙</button>
+      <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme" title="Toggle Dark/Light Mode">🌙</button>
       <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -29,69 +39,70 @@
   </div>
 </header>
 
+<!-- Side Drawer (Mobile) -->
 <aside id="sideDrawer" class="side-drawer" aria-hidden="true">
   <div class="drawer-header">
     <strong>Menu</strong>
     <button id="closeDrawer" aria-label="Close drawer">✕</button>
   </div>
   <nav class="drawer-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+    <a href="terms.html"><i class="fas fa-file-contract"></i> Terms &amp; Conditions</a>
+    <a href="chat.html"><i class="fas fa-comments"></i> Use Online</a>
   </nav>
   <div class="drawer-foot">
-    <button id="downloadApp" class="btn small">Download App</button>
-    <button id="useOnline" class="btn outline">Use Online</button>
+    <button id="downloadApp" class="btn"><i class="fas fa-download"></i> Download App</button>
+    <button id="useOnline" class="btn outline"><i class="fas fa-bolt"></i> Use Online</button>
   </div>
 </aside>
 
+<!-- Quick FAB -->
 <div id="quickMenu" class="quick-menu" aria-hidden="false">
-  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
   <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
-    <button class="quick-item" id="quickInvite">Invite</button>
-    <button class="quick-item" id="quickDownload">Download</button>
-    <button class="quick-item" id="quickContact">Contact</button>
+    <button class="quick-item" id="quickInvite"><i class="fas fa-link"></i> Invite</button>
+    <button class="quick-item" id="quickDownload"><i class="fas fa-arrow-down"></i> Download</button>
+    <button class="quick-item" id="quickContact"><i class="fab fa-instagram"></i> Contact</button>
   </div>
+  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
 </div>
 
+<!-- Main Content -->
 <main class="wrap content" id="mainContent">
   <h1>Privacy Policy</h1>
-  <p class="lead">Effective Date: Feb 15, 2026. This policy explains how data is collected, used and protected.</p>
+  <p class="lead">Effective Date: February 15, 2026. This policy explains our steadfast commitment to privacy and data minimization.</p>
 
   <section>
-    <h2>Information we collect</h2>
-    <p>We may collect:</p>
+    <h2><i class="fas fa-user-shield"></i> Information We Collect</h2>
+    <p>We practice extreme data minimization:
     <ul>
-      <li>Since this is open project and our motive is to provide fast messaging platform, we don't collect any user information till now.</li>
-      <li>Push subscription endpoints and keys when you opt in to notifications.</li>
+      <li><strong>No Account Tracking:</strong> We do not require registration, passwords, phone numbers, or email addresses to chat.</li>
+      <li><strong>Temporary Nicknames:</strong> Display names are chosen for the duration of the active chat session and are not stored in persistent profiles.</li>
+      <li><strong>Push Subscription (Optional):</strong> If you choose to enable browser push notifications, anonymous push subscription tokens are used solely to alert you of incoming messages while the tab is inactive.</li>
     </ul>
   </section>
 
   <section>
-    <h2>Use of information</h2>
-    <p>Information is used to operate the service, deliver messages, provide notifications, and maintain security. We do not sell your personal data.</p>
-  </section>
-
-  <!-- <section>
-    <h2>Retention</h2>
-    <p>Retention is determined by the operator. For self-hosted instances you control retention; for hosted instances contact the operator for deletion requests.</p>
-  </section> -->
-
-  <section>
-    <h2>Security</h2>
-    <p>We implement reasonable safeguards. However, users should avoid sharing highly sensitive personal data in the chat.</p>
+    <h2><i class="fas fa-tasks"></i> Use of Information</h2>
+    <p>Any technical data processed during a session is used strictly to establish WebSocket connections, route messages to room members, and ensure platform health. We never sell, monetize, or track your personal data or conversation logs.</p>
   </section>
 
   <section>
-    <h2>Contact</h2>
-    <p><a href="mailto:karshsecurities@gmail.com" class="mail">karshsecurities@gmail.com</a></p>
+    <h2><i class="fas fa-lock"></i> Security Practices</h2>
+    <p>We implement robust transport security (HTTPS/WSS) and private password-protected rooms. Because rooms are peer-focused and lightweight, users should exercise sound discretion and avoid sending sensitive personal identifiers or financial information over public channels.</p>
+  </section>
+
+  <section>
+    <h2><i class="fas fa-envelope-open-text"></i> Contact Information</h2>
+    <p>If you have any questions, clarifications, or requests regarding this Privacy Policy, please reach out to us at <a href="mailto:karshsecurities@gmail.com" class="mail">karshsecurities@gmail.com</a>.</p>
   </section>
 </main>
 
+<!-- Footer -->
 <footer class="site-footer">
   <div class="wrap">
-    <small>© <span id="year"></span> Jinnie Chat — Privacy first.</small>
+    <small>© <span id="year">2026</span> Jinnie Chat — Privacy first.</small>
   </div>
 </footer>
 

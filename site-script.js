@@ -1,6 +1,6 @@
+// site-script.js — Claymorphism Interactive Controller for Secondary Pages
 
-// site-script.js - drawer, dark mode, quick menu
-(function(){
+(function () {
   const hamburger = document.getElementById('hamburgerBtn');
   const drawer = document.getElementById('sideDrawer');
   const closeDrawer = document.getElementById('closeDrawer');
@@ -10,82 +10,159 @@
   const downloadBtn = document.getElementById('downloadApp');
   const useOnlineBtn = document.getElementById('useOnline');
 
-  function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); }
-  function closeDrawerFn(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
 
-  hamburger && hamburger.addEventListener('click', ()=>{
-    hamburger.classList.toggle('active');
-    if(window.innerWidth <= 880){
-      if(drawer.classList.contains('open')) closeDrawerFn(); else openDrawer();
-    } else {
-      // toggle nav on wide screens (if needed)
-      document.getElementById('navMenu')?.classList.toggle('open');
-    }
+  function closeDrawerFn() {
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      if (window.innerWidth <= 880) {
+        if (drawer && drawer.classList.contains('open')) {
+          closeDrawerFn();
+        } else {
+          openDrawer();
+        }
+      } else {
+        document.getElementById('navMenu')?.classList.toggle('open');
+      }
+    });
+  }
+
+  if (closeDrawer) closeDrawer.addEventListener('click', () => {
+    closeDrawerFn();
+    hamburger?.classList.remove('active');
   });
 
-  closeDrawer && closeDrawer.addEventListener('click', closeDrawerFn);
-
-  // close drawer when clicking outside
-  document.addEventListener('click', (e)=>{
-    if(drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)){
+  // Close drawer when clicking outside
+  document.addEventListener('click', (e) => {
+    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger?.contains(e.target)) {
       closeDrawerFn();
-      hamburger.classList.remove('active');
+      hamburger?.classList.remove('active');
     }
   });
 
   // Theme toggle with persistence
   const THEME_KEY = 'jinnie_theme';
-  function applyTheme(t){
-    if(t === 'dark'){ document.documentElement.classList.add('dark'); themeToggle.textContent = '☀️'; }
-    else { document.documentElement.classList.remove('dark'); themeToggle.textContent = '🌙'; }
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+      if (themeToggle) {
+        themeToggle.textContent = '☀️';
+        themeToggle.title = 'Switch to light mode';
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+      if (themeToggle) {
+        themeToggle.textContent = '🌙';
+        themeToggle.title = 'Switch to dark mode';
+      }
+    }
   }
-  const saved = localStorage.getItem(THEME_KEY) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  applyTheme(saved);
 
-  themeToggle && themeToggle.addEventListener('click', ()=>{
-    const now = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-    applyTheme(now);
-    localStorage.setItem(THEME_KEY, now);
-  });
+  const savedTheme = localStorage.getItem(THEME_KEY) || 
+    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      const nextTheme = isDark ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      localStorage.setItem(THEME_KEY, nextTheme);
+    });
+  }
 
   // Quick FAB
-  quickFab && quickFab.addEventListener('click', ()=>{
-    quickList.classList.toggle('hidden');
-    quickFab.classList.toggle('active');
-  });
+  if (quickFab && quickList) {
+    quickFab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      quickList.classList.toggle('hidden');
+      quickFab.classList.toggle('active');
+    });
 
-  document.getElementById('quickInvite')?.addEventListener('click', ()=>{
+    document.addEventListener('click', (e) => {
+      if (!quickFab.contains(e.target) && !quickList.contains(e.target)) {
+        quickList.classList.add('hidden');
+        quickFab.classList.remove('active');
+      }
+    });
+  }
+
+  document.getElementById('quickInvite')?.addEventListener('click', () => {
     const inviteInput = document.getElementById('invite-url');
     const url = inviteInput?.value || window.location.href;
-    navigator.clipboard.writeText(url).then(()=> alert('Invite link copied!'));
-    quickList.classList.add('hidden');
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(() => alert('Invite link copied!'));
+    } else {
+      const temp = document.createElement('input');
+      temp.value = url;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      alert('Invite link copied!');
+    }
+    quickList?.classList.add('hidden');
+    quickFab?.classList.remove('active');
   });
-  document.getElementById('quickDownload')?.addEventListener('click', ()=>{
+
+  document.getElementById('quickDownload')?.addEventListener('click', () => {
     const a = document.createElement('a');
-    a.href = document.getElementById('downloadLink')?.value || '/app/Jinnie-Chats-v2.apk';
-    a.target = '_blank';
+    a.href = document.getElementById('downloadLink')?.value || 'app/Jinnie-Chats-v2.apk';
+    a.download = 'Jinnie-Chats-v2.apk';
     a.click();
-    quickList.classList.add('hidden');
-  });
-  document.getElementById('quickContact')?.addEventListener('click', ()=>{
-    window.location.href = 'mailto:karshsecurities@gmail.com';
+    quickList?.classList.add('hidden');
+    quickFab?.classList.remove('active');
   });
 
-  downloadBtn && downloadBtn.addEventListener('click', ()=>{
-    window.location.href = document.getElementById('downloadLink')?.value || '/app/Jinnie-Chats-v2.apk';
-  });
-  useOnlineBtn && useOnlineBtn.addEventListener('click', ()=>{
-    window.open('/', '_blank');
+  document.getElementById('quickContact')?.addEventListener('click', () => {
+    window.open('https://www.instagram.com/karshsecurities/', '_blank', 'noopener,noreferrer');
+    quickList?.classList.add('hidden');
+    quickFab?.classList.remove('active');
   });
 
-  // close drawer on Escape
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape' && drawer.classList.contains('open')){ closeDrawerFn(); hamburger.classList.remove('active'); }
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = document.getElementById('downloadLink')?.value || 'app/Jinnie-Chats-v2.apk';
+      a.download = 'Jinnie-Chats-v2.apk';
+      a.click();
+    });
+  }
+
+  if (useOnlineBtn) {
+    useOnlineBtn.addEventListener('click', () => {
+      window.location.href = 'chat.html';
+    });
+  }
+
+  // Close drawer on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (drawer && drawer.classList.contains('open')) {
+        closeDrawerFn();
+        hamburger?.classList.remove('active');
+      }
+      if (quickList) {
+        quickList.classList.add('hidden');
+        quickFab?.classList.remove('active');
+      }
+    }
   });
+
+  // Footer Year
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
 })();
-
-
-const yearSpan = document.getElementById('year');
-const currentYear = new Date().getFullYear();
-yearSpan.textContent = currentYear;

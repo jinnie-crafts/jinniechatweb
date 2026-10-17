@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Jinnie Chat — Realtime Messaging</title>
+  <meta name="description" content="Jinnie Chat — Private realtime chat with password-protected rooms, rich media sharing, and tactile Claymorphism interface." />
+  <link rel="icon" href="jinnie-chats.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <img id="splash-logo" src="jinnie-chats.png" alt="Jinnie Chat">
+    <div class="splash-text">Jinnie Chat</div>
+  </div>
+
+  <!-- Username Modal -->
+  <div id="username-modal" class="modal">
+    <div class="modal-card">
+      <h2>Welcome to Jinnie Chat</h2>
+      <p class="muted">Enter your display name to start chatting with friends</p>
+      <input id="username-input" type="text" placeholder="Your display name..." autocomplete="name" required />
+      <button id="username-btn" class="btn primary">
+        <span>Continue</span> <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Room Creation / Joining Modal -->
+  <div id="room-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Create or Join a Room</h3>
+      <p class="muted">Start your own private space or join an existing conversation</p>
+
+      <!-- Create Room Section -->
+      <div id="create-section" class="room-section">
+        <input id="new-room-input" type="text" placeholder="Choose a room name..." autocomplete="off" />
+        <div class="password-wrapper">
+          <input id="new-room-password" type="password" placeholder="Set a room password..." autocomplete="new-password" />
+          <button type="button" class="toggle-eye" onclick="togglePassword('new-room-password')" aria-label="Toggle password visibility">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        <button id="new-room-btn" class="btn positive">
+          <i class="fas fa-plus-circle"></i> Create &amp; Join
+        </button>
+      </div>
+
+      <hr />
+
+      <!-- Existing Rooms List -->
+      <div>
+        <p class="muted" style="text-align: left; font-weight: 700; margin-bottom: 6px;">Available Rooms</p>
+        <div class="room-list-container">
+          <ul id="room-list" class="room-list">
+            <li>Loading rooms...</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Join Room Password Section -->
+      <div id="join-password-container" class="room-section hidden">
+        <p class="muted" style="font-weight: 700; color: var(--chat-primary);">Room Protected by Password</p>
+        <div class="password-wrapper">
+          <input id="join-room-password" type="password" placeholder="Enter room password..." autocomplete="current-password" />
+          <button type="button" class="toggle-eye" onclick="togglePassword('join-room-password')" aria-label="Toggle password visibility">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        <div id="password-alert" class="password-alert hidden">
+          <i class="fas fa-exclamation-circle"></i> Incorrect password, please try again
+        </div>
+        <button id="join-room-btn" class="btn positive">
+          <i class="fas fa-sign-in-alt"></i> Enter Room
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Chat Interface -->
+  <div class="chat-wrapper hidden">
+    <!-- Chat Room Header -->
+    <header class="chat-header">
+      <div class="chat-header-left">
+        <a href="index.html" title="Back to Homepage">
+          <img src="jinnie-chats.png" alt="Jinnie Chat" class="chat-logo-avatar">
+        </a>
+        <div class="chat-header-info">
+          <div class="title">Jinnie Chat</div>
+          <div id="chat-subtitle" class="subtitle">Connecting...</div>
+        </div>
+      </div>
+      <button id="invite-btn" class="invite-btn" title="Invite Friends">
+        <i class="fas fa-user-plus"></i> <span>Invite</span>
+      </button>
+    </header>
+
+    <!-- Connection Status Bar -->
+    <div id="status-bar" class="status-bar hidden"></div>
+
+    <!-- Scrollable Chat Body -->
+    <main id="chat-body" class="chat-body" aria-live="polite"></main>
+
+    <!-- Typing Indicator -->
+    <div id="typing-indicator" class="typing-indicator hidden">
+      <i class="fas fa-keyboard"></i>
+      <span id="typing-text">someone is typing</span>
+      <span class="typing-dots"><span></span><span></span><span></span></span>
+    </div>
+
+    <!-- Chat Message Composer -->
+    <footer class="chat-footer">
+      <input id="message-input" type="text" placeholder="Type your message..." autocomplete="off" />
+      <div class="chat-actions">
+        <button id="file-btn" class="circle-btn" type="button" title="Attach file or image">
+          <i class="fas fa-paperclip"></i>
+        </button>
+        <input id="file-input" type="file" hidden accept="image/*,application/pdf,.doc,.docx,.txt" />
+        <button id="send-btn" class="circle-btn" type="button" title="Send message">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Invite Friends Modal -->
+  <div id="inviteModal" class="modal hidden">
+    <div class="modal-card">
+      <button id="close-invite" class="close-btn" aria-label="Close invite modal">✕</button>
+      <h3>Invite Friends to Chat</h3>
+      <p class="muted">Share your room link so your friends can join instantly.</p>
+
+      <input id="invite-url" type="text" readonly aria-label="Invite Room Link" />
+
+      <div style="margin-top: 18px; display: flex; gap: 10px; flex-direction: column;">
+        <button id="copy-btn" class="btn">
+          <i class="fas fa-copy"></i> Copy Link
+        </button>
+        <button id="invite-sms-btn" class="btn" style="background: var(--chat-surface-subtle); color: var(--chat-text-heading); border: 1px solid rgba(255,255,255,0.9); box-shadow: var(--clay-btn-secondary-shadow);">
+          <i class="fas fa-comment"></i> Invite via SMS
+        </button>
+        <button id="invite-wa-btn" class="btn" style="background: #25D366; color: white;">
+          <i class="fab fa-whatsapp"></i> Invite via WhatsApp
+        </button>
+        <button id="invite-tg-btn" class="btn" style="background: #0088cc; color: white;">
+          <i class="fab fa-telegram"></i> Invite via Telegram
+        </button>
+        <button id="share-options-btn" class="btn positive">
+          <i class="fas fa-share-alt"></i> More Share Options
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Share Options Popup -->
+  <div id="shareOptionsPopup" class="share-popup hidden">
+    <div class="popup-card">
+      <h3>Share Room Via</h3>
+      <button class="share-option" id="popup-whatsapp">
+        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i> WhatsApp
+      </button>
+      <button class="share-option" id="popup-telegram">
+        <i class="fab fa-telegram" style="color: #0088cc; font-size: 1.2rem;"></i> Telegram
+      </button>
+      <button class="share-option" id="popup-sms">
+        <i class="fas fa-comment-dots" style="color: #10b981; font-size: 1.2rem;"></i> SMS Message
+      </button>
+      <button class="share-option" id="popup-copy">
+        <i class="fas fa-link" style="color: var(--chat-primary); font-size: 1.2rem;"></i> Copy Room Link
+      </button>
+      <button class="share-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>

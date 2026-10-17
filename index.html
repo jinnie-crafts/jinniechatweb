@@ -2,110 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Jinnie Chat — Connect with Friends</title>
-  <meta name="description" content="Jinnie Chat — realtime, private chat with password-protected rooms, file sharing, and mobile-friendly design.">
+  <meta name="description" content="Jinnie Chat — realtime, private chat with password-protected rooms, file sharing, and mobile-friendly claymorphism design.">
   <link rel="icon" href="jinnie-chats.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="feed.css">
 </head>
 <body>
-<!--Quick Fab-->
-<div id="quickMenu" class="quick-menu" aria-hidden="false">
-  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
-  <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
-    <button class="quick-item" id="quickInvite">Invite</button>
-    <button class="quick-item" id="quickDownload">Download</button>
-    <button class="quick-item" id="quickContact">Contact</button>
+
+  <!-- Quick FAB Menu -->
+  <div id="quickMenu" class="quick-menu" aria-hidden="false">
+    <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
+      <button class="quick-item" id="quickInvite"><i class="fas fa-link"></i> Invite Link</button>
+      <button class="quick-item" id="quickDownload"><i class="fas fa-arrow-down"></i> Download APK</button>
+      <button class="quick-item" id="quickContact"><i class="fab fa-instagram"></i> Contact</button>
+    </div>
+    <button id="quickFab" class="fab" aria-label="Quick menu" title="Quick Actions">＋</button>
   </div>
-</div>
+
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">
+      <a href="index.html" class="brand">
         <img src="jinnie-chats.png" alt="Jinnie Chat logo" class="logo">
         <span class="brand-name">Jinnie Chat</span>
-      </div>
+      </a>
       <div class="nav-ctas">
-        <a href="https://jinniechat.onrender.com" target="_blank" class="btn btn-ghost">Use Online</a>
-        <button id="downloadBtn2" class="btn btn-primary">Download App</button>
+        <a href="https://jinniechat.onrender.com" class="btn btn-ghost"><i class="fas fa-comments"></i> Use Online</a>
+        <button id="downloadBtn2" class="btn btn-primary"><i class="fas fa-download"></i> Download App</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-   <span class="branding"> by: karsh Tech</span>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-title">Private. Fast. Beautiful.</h1>
-        <p class="hero-sub">Jinnie Chat brings people together with instant messaging, password-protected rooms, file & image sharing, and realtime notifications — built for phones and desktop.</p>
+  <!-- Creator Branding -->
+  <div class="wrap">
+    <span class="branding">by karsh Tech</span>
+  </div>
 
-        <div class="hero-ctas">
-          <a href="https://jinniechat.onrender.com" class="btn btn-large">Use Online — Try Now</a>
-          <button id="downloadBtn3" class="btn btn-outline">Get the App</button>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-left motion-reveal">
+          <div class="hero-pill-badge">
+            <span>✨</span> Next-Gen Instant Messaging
+          </div>
+          <h1 class="hero-title">
+            Private. Fast. <span class="highlight">Beautiful.</span>
+          </h1>
+          <p class="hero-sub">
+            Jinnie Chat brings people together with instant messaging, password-protected rooms, file & image sharing, and realtime notifications — crafted with a pillowy, soft tactile claymorphism experience.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="chat.html" class="btn btn-large btn-primary">
+              <i class="fas fa-bolt"></i> Use Online — Try Now
+            </a>
+            <button id="downloadBtn3" class="btn btn-outline btn-large">
+              <i class="fab fa-android"></i> Get the App
+            </button>
+          </div>
+
+          <ul class="features">
+            <li><span>🔒</span> Password-protected rooms</li>
+            <li><span>📁</span> Send files & images</li>
+            <li><span>📱</span> Mobile-first & PWA-ready</li>
+            <li><span>🚀</span> Low-latency realtime chat</li>
+          </ul>
         </div>
 
-        <ul class="features">
-          <li>🔒 Password-protected rooms</li>
-          <li>📁 Send files & images</li>
-          <li>📱 Mobile-first & PWA-ready</li>
-          <li>🚀 Low-latency realtime chat</li>
-        </ul>
-      </div>
-
-      <div class="hero-right">
-        <div class="mockup">
-          <img src="app-interface.png" alt="Jinnie Chat app preview" class="mockup-img">
-          <div class="mockup-badge">New • v2.1</div>
+        <div class="hero-right motion-reveal motion-stagger-2">
+          <div class="mockup">
+            <div class="mockup-chip chip-1">
+              <span>💬</span> Realtime Audio & Ping
+            </div>
+            <div class="mockup-chip chip-2">
+              <span>🔐</span> Encrypted Rooms
+            </div>
+            <img src="app-interface.png" alt="Jinnie Chat app preview" class="mockup-img">
+            <div class="mockup-badge">New • v2.1</div>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Showcase / Screens -->
+  <!-- Showcase / Features -->
   <section class="showcase">
     <div class="wrap">
-      <h2>What you’ll love</h2>
+      <div class="section-head motion-reveal">
+        <h2>What you’ll love</h2>
+        <p>Built for fluid conversations, tactile aesthetics, and zero-compromise security.</p>
+      </div>
+
       <div class="cards">
-        <article class="card">
-          <div class="icon">💬</div>
+        <article class="card motion-reveal motion-stagger-1">
+          <div class="icon-wrapper">💬</div>
           <h3>Real-time Messaging</h3>
-          <p>Instant delivery and read-friendly UI similar to modern chat apps.</p>
+          <p>Instant socket delivery and read-friendly UI built with gentle clay cushions and fluid interactions.</p>
         </article>
 
-        <article class="card">
-          <div class="icon">🔐</div>
+        <article class="card motion-reveal motion-stagger-2">
+          <div class="icon-wrapper">🔐</div>
           <h3>Private Rooms</h3>
-          <p>Create rooms with a password — only invited people can join.</p>
+          <p>Create rooms with a custom password — only invited people with the passkey can enter and talk.</p>
         </article>
 
-        <article class="card">
-          <div class="icon">📦</div>
+        <article class="card motion-reveal motion-stagger-3">
+          <div class="icon-wrapper">📦</div>
           <h3>Send Files & Images</h3>
-          <p>Share photos or files quickly — preview images in chat.</p>
+          <p>Share photos or documents seamlessly with instant inline image previews directly in the conversation.</p>
         </article>
 
-        <article class="card">
-          <div class="icon">🔔</div>
-          <h3>Push & In-App Notifications</h3>
-          <p>Get alerts when someone sends a message or joins your room.</p>
+        <article class="card motion-reveal motion-stagger-4">
+          <div class="icon-wrapper">🔔</div>
+          <h3>Push & In-App Alerts</h3>
+          <p>Stay updated with instant visual and audio alerts whenever someone sends a message or enters your room.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CTA strip -->
+  <!-- CTA Strip -->
   <section class="cta-strip">
     <div class="wrap">
-      <div class="cta-left">
-        <h3>Ready to chat with friends across the world?</h3>
-        <p>No signup required — pick a display name and start.</p>
-      </div>
-      <div class="cta-right">
-        <a href="https://jinniechat.onrender.com" target="_blank" class="btn btn-large">Use Online</a>
-        <button id="downloadBtn4" class="btn btn-outline">Download App</button>
+      <div class="cta-box motion-reveal">
+        <div class="cta-left">
+          <h3>Ready to chat with friends across the world?</h3>
+          <p>No tedious registration — simply pick a display name and jump into a room.</p>
+        </div>
+        <div class="cta-right">
+          <a href="https://jinniechat.onrender.com" class="btn btn-large btn-primary">
+            <i class="fas fa-play"></i> Launch Chat
+          </a>
+          <button id="downloadBtn4" class="btn btn-outline btn-large">
+            <i class="fas fa-download"></i> Download App
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -114,32 +152,31 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div class="brand-small">
-        <img src="jinnie-chats.png" alt="logo" class="logo-small">
+        <img src="jinnie-chats.png" alt="Jinnie Chat logo" class="logo-small">
         <span>Jinnie Chat</span>
       </div>
       <div class="foot-links">
-        <a href="/about.html">About |</a>
-        <a href="/privacy.html">Privacy |</a>
-        <a href="/terms.html">Terms</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
-      <div class="copyright">© <span id="year">2026</span> Jinnie Chat — Built with ❤️</div>
+      <div class="copyright">
+        © <span id="year">2026</span> Jinnie Chat — Built with ❤️ by karsh Tech
+      </div>
     </div>
   </footer>
 
   <!-- Download Modal -->
   <div id="downloadModal" class="download-modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card">
-      <button class="close" id="closeDownload" aria-label="Close">✕</button>
+      <button class="close" id="closeDownload" aria-label="Close download modal">✕</button>
       <h3>Download Jinnie Chat</h3>
-      <p class="muted">Choose your option — or copy the direct link to share.</p>
+      <p class="muted">Choose your option — or copy the direct link to share with friends.</p>
 
       <div class="download-actions">
-        <!-- <a id="playStoreBtn" class="store-btn" href="https://play.google.com/store/apps/details?id=com.example.jinnie" target="_blank" rel="noopener">
-          <img src="play-badge.png" alt="Get it on Google Play" /> Google Play
-        </a> -->
-
-        <a id="apkBtn" class="store-btn" href="/app/Jinnie-Chats-v2.apk" download>
-          <img src="jinnie-chats.png" alt="APK" /> Download APK
+        <a id="apkBtn" class="store-btn" href="app/Jinnie-Chats-v2.apk" download>
+          <img src="jinnie-chats.png" alt="APK" />
+          <span>Download Android APK (v2.1)</span>
         </a>
 
         <a id="appGalleryBtn" class="store-btn" href="#" style="display:none;">
@@ -148,12 +185,12 @@
       </div>
 
       <div class="copy-row">
-        <input id="downloadLink" readonly value="https://tinyurl.com/jinniechat"/>
-        <button id="copyDownload" class="btn small">Copy</button>
+        <input id="downloadLink" readonly value="https://tinyurl.com/jinniechat" aria-label="Download Link" />
+        <button id="copyDownload" class="btn btn-primary small">Copy</button>
       </div>
 
       <div class="modal-foot">
-        <small class="muted">Tip: Install as PWA on mobile for best experience.</small>
+        <small class="muted">💡 Tip: Install as a PWA on mobile for full-screen performance.</small>
       </div>
     </div>
   </div>
@@ -161,108 +198,120 @@
   <!-- Toast -->
   <div id="landingToast" class="toast hidden">Copied!</div>
 
-<!--Feedback system-->
-    <div id="feedback-tab" onmousedown="startDrag(event)">
-        Feedback
-    </div>
+  <!-- Draggable Feedback Tab & System -->
+  <div id="feedback-tab" onmousedown="startDrag(event)">
+    <i class="fas fa-comment-alt"></i> Feedback
+  </div>
 
-    <div id="feedback-modal" class="modal" onclick="if(event.target.id === 'feedback-modal') toggleModal(false)">
-        <div class="modal-content">
-            
-            <div class="fd-header">
-                <div class="logo-circle">k</div>
-                <h2>Jinnie Chat | karsh</h2>
-            </div>
-            
-            <div id="main-menu">
-                <ul class="menu">
-                    <li class="menu-item" onclick="showPage('bug-report')">
-                        <div class="icon"><i class="fas fa-bug"></i></div>
-                        <div class="text-content">
-                            <h3>Report a bug</h3>
-                            <p>Something is broken? Let us know!</p>
-                        </div>
-                    </li>
-                    <li class="menu-item" onclick="showPage('suggestion')">
-                        <div class="icon"><i class="fas fa-comment-dots"></i></div>
-                        <div class="text-content">
-                            <h3>Suggest improvements</h3>
-                            <p>What could we do better?</p>
-                        </div>
-                    </li>
-                    <li class="menu-item" onclick="showPage('support')">
-                        <div class="icon"><i class="fas fa-headset"></i></div>
-                        <div class="text-content">
-                            <h3>Support</h3>
-                            <p>Contact our lovely support team</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-           <div id="bug-report" class="internal-page">
-            <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
-    <h3>🐞 Report a Bug</h3>
-    <form id="bug-form" onsubmit="submitForm('bug', event)">
-        <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
-         <input type="hidden" name="from_name" value="Jinnie Chat">
-        <input type="hidden" name="subject" value="New Bug Reported">
-        
-        <label for="bug-summary">Summarize the issue:</label>
-        <input type="text" name="Summary" id="bug-summary" required>
-        
-        <label for="bug-description">Steps to reproduce & details:</label>
-        <textarea id="bug-description" name="Description" rows="5" required></textarea>
-        
-        <label for="bug-email">Your Email (for follow-up):</label>
-        <input type="email" name="User-Email" id="bug-email">
-        <div class="h-captcha" data-captcha="true"></div>
-        <button type="submit">Submit Bug Report</button>
-    </form>
-</div>
-<div id="suggestion" class="internal-page">
-                <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
-                <h3>💬 Suggest Improvements</h3>
-                <form onsubmit="submitForm('suggestion', event)">
-                    <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
-                    <input type="hidden" name="from_name" value="Jinnie Chat">
-                     <input type="hidden" name="subject" value="New Suggestion Logged">
-                    <label for="suggestion-title">Idea Title:</label>
-                    <input type="text" id="suggestion-title" name="sug-title" required>
-                    
-                    <label for="suggestion-details">Detailed Explanation:</label>
-                    <textarea id="suggestion-details" rows="5" name="sug-desp" required></textarea>
-                    <div class="h-captcha" data-captcha="true"></div>
-                    <button type="submit">Submit Suggestion</button>
-                </form>
-            </div>
+  <div id="feedback-modal" class="modal" onclick="if(event.target.id === 'feedback-modal') toggleModal(false)">
+    <div class="modal-content">
+      <div class="fd-header">
+        <div class="logo-circle">K</div>
+        <h2>Jinnie Chat | karsh</h2>
+        <button class="close-fd-btn" onclick="toggleModal(false)" aria-label="Close feedback">✕</button>
+      </div>
 
-            <div id="support" class="internal-page">
-                <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
-                <h3>🎧 Contact Support</h3>
-                <p>For immediate assistance, please use one of the methods below. Check our FAQ first!</p>
-                
-                <p><strong>📧 Email Support:</strong><br>karshsecurities@gmail.com</p>
-                
-                <p><strong>💬 Live Chat:</strong><br>Available Mon-Fri, 9am-5pm IST</p>
-                
-                <p><strong>🌐 Help Center / FAQ:</strong><br><a href="https://www.instagram.com/karshsecurities" target="_blank">Jinnie Chats</a></p>
-                
-                </div>
+      <div id="main-menu">
+        <ul class="menu">
+          <li class="menu-item" onclick="showPage('bug-report')">
+            <div class="icon"><i class="fas fa-bug"></i></div>
+            <div class="text-content">
+              <h3>Report a bug</h3>
+              <p>Something is broken? Let us know!</p>
+            </div>
+          </li>
+          <li class="menu-item" onclick="showPage('suggestion')">
+            <div class="icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="text-content">
+              <h3>Suggest improvements</h3>
+              <p>What could we do better?</p>
+            </div>
+          </li>
+          <li class="menu-item" onclick="showPage('support')">
+            <div class="icon"><i class="fas fa-headset"></i></div>
+            <div class="text-content">
+              <h3>Support</h3>
+              <p>Contact our support team</p>
+            </div>
+          </li>
+        </ul>
+      </div>
 
+      <div id="bug-report" class="internal-page">
+        <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+        <h3>🐞 Report a Bug</h3>
+        <form id="bug-form" onsubmit="submitForm('bug', event)">
+          <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
+          <input type="hidden" name="from_name" value="Jinnie Chat">
+          <input type="hidden" name="subject" value="New Bug Reported">
+
+          <label for="bug-summary">Summarize the issue:</label>
+          <input type="text" name="Summary" id="bug-summary" placeholder="e.g. Chat message delayed..." required>
+
+          <label for="bug-description">Steps to reproduce & details:</label>
+          <textarea id="bug-description" name="Description" rows="4" placeholder="Describe what happened..." required></textarea>
+
+          <label for="bug-email">Your Email (for follow-up):</label>
+          <input type="email" name="User-Email" id="bug-email" placeholder="you@example.com">
+          <div class="h-captcha" data-captcha="true"></div>
+          <button type="submit" class="btn btn-primary">Submit Bug Report</button>
+        </form>
+      </div>
+
+      <div id="suggestion" class="internal-page">
+        <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+        <h3>💡 Suggest Improvements</h3>
+        <form onsubmit="submitForm('suggestion', event)">
+          <input type="hidden" name="access_key" value="c36bef08-93fe-4a4a-9002-66f3bba13867">
+          <input type="hidden" name="from_name" value="Jinnie Chat">
+          <input type="hidden" name="subject" value="New Suggestion Logged">
+
+          <label for="suggestion-title">Idea Title:</label>
+          <input type="text" id="suggestion-title" name="sug-title" placeholder="e.g. Voice messages..." required>
+
+          <label for="suggestion-details">Detailed Explanation:</label>
+          <textarea id="suggestion-details" rows="4" name="sug-desp" placeholder="Describe your idea..." required></textarea>
+          <div class="h-captcha" data-captcha="true"></div>
+          <button type="submit" class="btn btn-primary">Submit Suggestion</button>
+        </form>
+      </div>
+
+      <div id="support" class="internal-page">
+        <span class="back-btn" onclick="showMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</span>
+        <h3>🎧 Contact Support</h3>
+        <p>For immediate assistance, please use one of the methods below:</p>
+
+        <div class="support-item">
+          <strong><i class="fas fa-envelope"></i> Email Support:</strong>
+          <p><a href="mailto:karshsecurities@gmail.com">karshsecurities@gmail.com</a></p>
         </div>
-    </div>
 
-    <div id="confirmation-modal" class="modal" onclick="if(event.target.id === 'confirmation-modal') showConfirmation(false)">
-        <div class="modal-content">
-            <div class="icon-success"><i class="fas fa-check-circle"></i></div>
-            <h3 id="confirmation-title"></h3>
-            <p id="confirmation-message"></p>
-            <button class="close-btn" onclick="showConfirmation(false)">Got It!</button>
+        <div class="support-item">
+          <strong><i class="fas fa-clock"></i> Live Chat Availability:</strong>
+          <p>Mon - Fri, 9am - 5pm IST</p>
         </div>
+
+        <div class="support-item">
+          <strong><i class="fab fa-instagram"></i> Instagram / FAQ:</strong>
+          <p><a href="https://www.instagram.com/karshsecurities" target="_blank" rel="noopener">@karshsecurities</a></p>
+        </div>
+      </div>
     </div>
-    <script src="landing.js"></script>
-    <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="feed.js"></script>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmation-modal" class="modal" onclick="if(event.target.id === 'confirmation-modal') showConfirmation(false)">
+    <div class="modal-content confirmation-content">
+      <div class="icon-success"><i class="fas fa-check-circle"></i></div>
+      <h3 id="confirmation-title">Success</h3>
+      <p id="confirmation-message">Thank you for your submission.</p>
+      <button class="btn btn-primary close-btn" onclick="showConfirmation(false)">Got It!</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="landing.js"></script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  <script src="feed.js"></script>
 </body>
 </html>

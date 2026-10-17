@@ -1,210 +1,413 @@
-/* BASE STYLES & LAYOUT */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f0f2f5;
-    padding: 0px;
-    padding-bottom: 50px;
-    /* min-height: 200vh; */
-    /* FIX: Prevents horizontal scrollbar that can trigger when fixed elements are mispositioned */
-    overflow-x: hidden; 
-    overflow-y: auto;
-    overscroll-behavior: none;
-}
+/* ==========================================================================
+   FEEDBACK SYSTEM — MOBILE-FIRST CLAYMORPHISM STYLESHEET
+   Touch-Friendly Draggable Tab • Responsive Modals • Inset Inputs
+   ========================================================================== */
 
 /* --- DRAGGABLE SIDEWAYS TAB --- */
 #feedback-tab {
-    contain: layout paint;
-    position: fixed; 
-    /* Use right and top for initial reliable position (will be updated by JS on drag/stop) */
-    right: 1px;
-    top: 60%; 
-    
-    /* Keep the rotation and adjustment */
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: 100% 0; /* Important for the rotation */
-    background-color: #00c853; 
-    color: white;
-    padding: 8px 18px;
-    border-radius: 0 0 5px 5px;
-    font-size: 1em;
-    font-weight: 600;
-    cursor: grab;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    user-select: none;
-    transition: background-color 0.2s;
+  contain: layout paint;
+  position: fixed;
+  right: 1px;
+  top: 60%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: 100% 0;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 0 0 14px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: grab;
+  box-shadow: 
+    0 8px 20px -4px rgba(16, 185, 129, 0.4),
+    inset 1.5px 1.5px 3px 0 rgba(255, 255, 255, 0.6),
+    inset -1.5px -1.5px 4px 0 rgba(6, 78, 59, 0.35);
+  z-index: 1000;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  touch-action: pan-y; /* Allows normal page scrolling until active drag */
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
-#feedback-tab:hover { background-color: #00a544; }
-#feedback-tab:active { cursor: grabbing; }
 
-/* --- MAIN MODAL POPUP STYLES --- */
+#feedback-tab:hover {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.5), inset 2px 2px 3px rgba(255, 255, 255, 0.7);
+}
+
+#feedback-tab.is-dragging {
+  cursor: grabbing;
+  touch-action: none; /* Disables scroll only during dragging */
+}
+
+/* Mobile compact feedback tab */
+@media (max-width: 600px) {
+  #feedback-tab {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+/* --- MAIN MODAL OVERLAY --- */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: auto;
+  background-color: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.modal.active { display: flex; }
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* --- MODAL CARD (INFLATED CLAY) --- */
 .modal-content {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    width: 90%;
-    max-width: 380px;
-    position: relative;
-    animation: fadeIn 0.3s;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- CONFIRMATION POPUP STYLES (NEW) --- */
-#confirmation-modal .modal-content {
-    text-align: center;
-    padding: 30px;
-}
-#confirmation-modal .icon-success {
-    font-size: 50px;
-    color: #00c853;
-    margin-bottom: 15px;
-}
-#confirmation-modal h3 {
-    color: #333;
-    margin-top: 0;
-    font-size: 1.5em;
-}
-#confirmation-modal p {
-    color: #777;
-    margin-bottom: 20px;
-}
-#confirmation-modal .close-btn {
-    background-color: #00c853;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
+  background-color: var(--clay-surface, #ffffff);
+  border-radius: 28px;
+  box-shadow: 
+    0 24px 52px -12px rgba(15, 23, 42, 0.2),
+    0 8px 20px -4px rgba(15, 23, 42, 0.08),
+    inset 2px 2px 4px 0 rgba(255, 255, 255, 1),
+    inset -2.5px -2.5px 6px 0 rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  animation: clayModalPop 0.32s cubic-bezier(0.34, 1.45, 0.64, 1);
 }
 
-/* --- HEADER & MENU STYLES (UNCHANGED) --- */
+@keyframes clayModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- MODAL HEADER --- */
 .fd-header {
-    background-color: #00c853;
-    color: white;
-    padding: 15px 25px;
-    display: flex;
-    align-items: center;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .logo-circle {
-    width: 25px; height: 25px; border: 2px solid white; border-radius: 50%;
-    margin-right: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6);
 }
-.fd-header h2 { margin: 0; font-size: 1.2em; font-weight: 500; }
-.menu { list-style: none; padding: 0; margin: 0; }
+
+.fd-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex: 1;
+}
+
+.close-fd-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: bold;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.close-fd-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+}
+
+/* --- MENU ITEMS --- */
+.menu {
+  list-style: none;
+  padding: 12px 14px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .menu-item {
-    display: flex; align-items: center; padding: 20px 25px; border-bottom: 1px solid #eee;
-    cursor: pointer; transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--clay-surface-subtle, #f8fafc);
+  box-shadow: 
+    0 4px 10px -2px rgba(15, 23, 42, 0.05),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.95),
+    inset -1.5px -1.5px 3px rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.menu-item:hover { background-color: #f8f8f8; }
-.icon {
-    font-size: 30px; color: #00c853; margin-right: 20px; width: 30px; text-align: center;
-}
-.text-content { flex-grow: 1; }
-.text-content h3 { margin: 0; font-size: 1.1em; color: #333; font-weight: 600; }
-.text-content p { margin: 5px 0 0; font-size: 0.9em; color: #777; }
 
-/* --- INTERNAL PAGES STYLES (UNCHANGED) --- */
-.internal-page { padding: 25px; display: none; }
+.menu-item:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 
+    0 8px 18px -4px rgba(15, 23, 42, 0.09),
+    inset 2px 2px 3.5px rgba(255, 255, 255, 1),
+    inset -2px -2px 4px rgba(148, 163, 184, 0.18);
+}
+
+.menu-item .icon {
+  font-size: 22px;
+  color: #10b981;
+  margin-right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 1px 1px 2px rgba(16, 185, 129, 0.15);
+}
+
+.text-content {
+  flex-grow: 1;
+}
+
+.text-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.text-content p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+/* --- INTERNAL PAGES (Forms) --- */
+.internal-page {
+  padding: 20px;
+  display: none;
+}
+
 .internal-page h3 {
-    color: #00c853; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0;
+  color: #0f172a;
+  font-size: 1.18rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
 .internal-page .back-btn {
-    font-size: 0.9em; color: #00c853; cursor: pointer; display: block; margin-bottom: 15px;
-}
-.internal-page label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 600; }
-.internal-page input[type="email"],
-.internal-page textarea {
-    width: calc(100% - 20px); padding: 10px; border: 1px solid #ccc; border-radius: 4px;
-    box-sizing: border-box; resize: vertical;
-}
-.internal-page button {
-    background-color: #00c853; color: white; padding: 10px 15px; border: none; border-radius: 4px;
-    cursor: pointer; margin-top: 20px; width: 100%; font-size: 1em; transition: background-color 0.2s;
+  font-size: 0.88rem;
+  color: #10b981;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: #ecfdf5;
+  min-height: 36px;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
 }
 
-/*input section text field stylying*/
-/* --- Input Field and Text Area Decoration --- */
+.internal-page .back-btn:hover {
+  background: #d1fae5;
+  transform: translateX(-2px);
+}
 
-/* Selects all text inputs and textareas within the internal pages */
+.internal-page label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+/* Inset Clay Inputs with 16px font to prevent mobile zoom */
 .internal-page input[type="text"],
 .internal-page input[type="email"],
 .internal-page textarea {
-    /* 1. Reset and Sizing */
-    width: 100%; /* Make it full width of the container */
-    padding: 12px; /* Good vertical and horizontal spacing */
-    
-    /* 2. Modern Borders */
-    border: 1px solid #dcdfe6; /* Light gray border for a modern look */
-    border-radius: 6px; /* Slightly rounded corners */
-    box-sizing: border-box; /* Ensures padding doesn't increase total width */
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effect */
-    font-size: 1em; /* Ensures text size is readable */
-    color: #333; /* Dark text color */
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 16px; /* Prevents auto-zoom on mobile */
+  font-family: inherit;
+  box-shadow: 
+    inset 2px 2px 4px rgba(15, 23, 42, 0.07),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.95);
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.2s ease;
 }
 
-/* Ensure textarea can be resized vertically but not horizontally */
 .internal-page textarea {
-    resize: vertical;
-    min-height: 100px;
+  resize: vertical;
+  min-height: 85px;
 }
 
-/* 3. Focus Effect (Most Important Decoration) */
 .internal-page input:focus,
 .internal-page textarea:focus {
-    border-color: #00c853; /* Change border color to the brand green */
-    outline: none; /* Remove default browser focus outline */
-    box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.2); /* Subtle green glow */
-    background-color: #ffffff;
+  border-color: #10b981;
+  background: #ffffff;
+  box-shadow: 
+    inset 2px 2px 4px rgba(15, 23, 42, 0.08),
+    inset -2px -2px 4px rgba(255, 255, 255, 1),
+    0 0 0 3px rgba(16, 185, 129, 0.22);
 }
-
-/* 4. Placeholder Text Styling (Optional but nice touch) */
-.internal-page ::placeholder {
-    color: #a0a4a8; /* Lighter color for placeholder text */
-    opacity: 1; /* Ensure compatibility across browsers */
-}
-
-/* --- Submission Button Enhancement --- */
 
 .internal-page button[type="submit"] {
-    /* Existing color and size are good, just adding slight lift */
-    background-color: #00c853;
-    color: white;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 25px; /* Slightly more space above the button */
-    width: 100%;
-    font-size: 1.1em;
-    font-weight: 600; /* Makes the text pop */
-    transition: background-color 0.2s, transform 0.1s;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 12px 20px;
+  min-height: 46px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  margin-top: 18px;
+  width: 100%;
+  font-size: 0.98rem;
+  font-weight: 700;
+  touch-action: manipulation;
+  box-shadow: 
+    0 8px 20px -4px rgba(16, 185, 129, 0.4),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.55),
+    inset -1.5px -1.5px 4px rgba(6, 78, 59, 0.35);
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .internal-page button[type="submit"]:hover {
-    background-color: #00a544;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.48);
 }
 
 .internal-page button[type="submit"]:active {
-    transform: translateY(1px); /* Slight press down effect */
+  transform: translateY(1px) scale(0.98);
 }
-        /**/
+
+/* Support Items */
+.support-item {
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 14px;
+  margin-top: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 
+    0 3px 8px -2px rgba(15, 23, 42, 0.04),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.support-item strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0f172a;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.support-item p {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.88rem;
+  word-break: break-word;
+}
+
+.support-item a {
+  color: #10b981;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* --- CONFIRMATION POPUP --- */
+.confirmation-content {
+  text-align: center;
+  padding: 30px 22px;
+}
+
+.confirmation-content .icon-success {
+  font-size: 48px;
+  color: #10b981;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 10px rgba(16, 185, 129, 0.3));
+}
+
+.confirmation-content h3 {
+  color: #0f172a;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.confirmation-content p {
+  color: #64748b;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+}
+
+.confirmation-content .close-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 28px;
+  min-height: 44px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 8px 18px -4px rgba(16, 185, 129, 0.4);
+}

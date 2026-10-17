@@ -4,24 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Terms &amp; Conditions — Jinnie Chat</title>
-  <link rel="icon" href="jinnie-chats.png">
+  <meta name="description" content="Terms & Conditions governing access to and use of Jinnie Chat.">
+  <link rel="icon" href="jinnie-chats.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="site-style.css">
 </head>
 <body>
 
+<!-- Site Header -->
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html"><img src="jinnie-chats.png" alt="Jinnie Chat" class="logo"> <span>Jinnie Chat</span></a>
+    <a class="brand" href="index.html">
+      <img src="jinnie-chats.png" alt="Jinnie Chat" class="logo">
+      <span>Jinnie Chat</span>
+    </a>
 
     <nav class="nav-links" id="navMenu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="privacy.html">Privacy</a>
-      <a href="terms.html">T&C</a>
+      <a href="terms.html" class="active">Terms</a>
+      <a href="chat.html"><i class="fas fa-comments"></i> Use Online</a>
     </nav>
 
     <div class="header-actions">
-      <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme">🌙</button>
+      <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme" title="Toggle Dark/Light Mode">🌙</button>
       <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
@@ -29,65 +39,70 @@
   </div>
 </header>
 
+<!-- Side Drawer (Mobile) -->
 <aside id="sideDrawer" class="side-drawer" aria-hidden="true">
   <div class="drawer-header">
     <strong>Menu</strong>
     <button id="closeDrawer" aria-label="Close drawer">✕</button>
   </div>
   <nav class="drawer-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+    <a href="terms.html"><i class="fas fa-file-contract"></i> Terms &amp; Conditions</a>
+    <a href="chat.html"><i class="fas fa-comments"></i> Use Online</a>
   </nav>
   <div class="drawer-foot">
-    <button id="downloadApp" class="btn small">Download App</button>
-    <button id="useOnline" class="btn outline">Use Online</button>
+    <button id="downloadApp" class="btn"><i class="fas fa-download"></i> Download App</button>
+    <button id="useOnline" class="btn outline"><i class="fas fa-bolt"></i> Use Online</button>
   </div>
 </aside>
 
+<!-- Quick FAB -->
 <div id="quickMenu" class="quick-menu" aria-hidden="false">
-  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
   <div id="quickList" class="quick-list hidden" role="menu" aria-hidden="true">
-    <button class="quick-item" id="quickInvite">Invite</button>
-    <button class="quick-item" id="quickDownload">Download</button>
-    <button class="quick-item" id="quickContact">Contact</button>
+    <button class="quick-item" id="quickInvite"><i class="fas fa-link"></i> Invite</button>
+    <button class="quick-item" id="quickDownload"><i class="fas fa-arrow-down"></i> Download</button>
+    <button class="quick-item" id="quickContact"><i class="fab fa-instagram"></i> Contact</button>
   </div>
+  <button id="quickFab" class="fab" aria-label="Quick menu">＋</button>
 </div>
 
+<!-- Main Content -->
 <main class="wrap content" id="mainContent">
   <h1>Terms &amp; Conditions</h1>
-  <p class="lead">These Terms govern your access to and use of Jinnie Chat. By using the Service you agree to these Terms.</p>
+  <p class="lead">Effective Date: February 15, 2026. These Terms govern your access to and usage of the Jinnie Chat web application and services.</p>
 
   <section>
-    <h2>User obligations</h2>
-    <p>Users must comply with applicable laws and not use the Service to transmit unlawful, infringing or harmful content.</p>
+    <h2><i class="fas fa-balance-scale"></i> User Obligations</h2>
+    <p>Users must comply with all applicable local and international laws. You agree not to transmit harmful code, abusive content, unauthorized automated spam, or unlawful material across any room or channel.</p>
   </section>
 
   <section>
-    <h2>Room access</h2>
-    <p>Room creators control access via passwords. The Service does not guarantee absolute confidentiality.</p>
+    <h2><i class="fas fa-key"></i> Room Access &amp; Responsibilities</h2>
+    <p>Room creators control room entry through password protection. While Jinnie Chat enforces access control keys, users are responsible for keeping their room passwords secure and not sharing credentials with unintended parties.</p>
   </section>
 
   <section>
-    <h2>Intellectual property</h2>
-    <p>All rights to the Service and its contents belong karsh Securities. Unauthorized use is prohibited.</p>
+    <h2><i class="fas fa-copyright"></i> Intellectual Property</h2>
+    <p>All platform trademarks, branding, code architecture, and software assets are the exclusive property of karsh Securities and the respective creators. Unauthorized redistribution, cloning, or commercial resale without written permission is prohibited.</p>
   </section>
 
   <section>
-    <h2>Limitation of liability</h2>
-    <p>To the fullest extent permitted by law, the operator is not liable for indirect or consequential damages arising from use of the Service.</p>
+    <h2><i class="fas fa-shield-virus"></i> Limitation of Liability</h2>
+    <p>To the fullest extent permissible by applicable law, the service operator and creators are not liable for direct, indirect, or consequential damages resulting from downtime, connection interruptions, or user conduct.</p>
   </section>
 
   <section>
-    <h2>Governing law</h2>
-    <p>These terms are governed by the law of the jurisdiction of the operator.</p>
+    <h2><i class="fas fa-gavel"></i> Governing Law &amp; Inquiries</h2>
+    <p>These terms are governed by the laws of the jurisdiction of the operator. For any queries regarding these Terms, contact us directly at <a href="mailto:karshsecurities@gmail.com" class="mail">karshsecurities@gmail.com</a>.</p>
   </section>
 </main>
 
+<!-- Footer -->
 <footer class="site-footer">
   <div class="wrap">
-    <small>© <span id="year"></span> Jinnie Chat — All rights reserved.</small>
+    <small>© <span id="year">2026</span> Jinnie Chat — All rights reserved.</small>
   </div>
 </footer>
 
